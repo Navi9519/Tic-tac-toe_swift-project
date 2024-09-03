@@ -12,10 +12,7 @@ struct Player {
     
     var name: String
     var totalScore: Int?
-    //var token: token?
-    var move: [Int]
-    
-    
-    
+    var id: Int
+
     
 }
