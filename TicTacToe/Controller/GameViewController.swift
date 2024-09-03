@@ -8,10 +8,17 @@
 import UIKit
 
 class GameViewController: UIViewController {
+    
+    var gameBoard: [Array] = [
+         [1, 2, 3],
+         [1, 2, 3],
+         [1, 2, 3]
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Do any additional setup after loading the view.
     }
     
