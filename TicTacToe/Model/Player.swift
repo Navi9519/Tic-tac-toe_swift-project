@@ -12,7 +12,7 @@ struct Player {
     
     var name: String
     var totalScore: Int?
-    var id: Int
+   // var token: [String: UIImageView] = ["x" : xtoken ?? ]
 
     
 }

@@ -10,29 +10,20 @@ import UIKit
 class GameViewController: UIViewController {
     
     
-    var gameBoard: [String:[Int]] = [
-        "A":  [1, 2, 3],
-        "B":  [4, 5, 6],
-        "C":  [7, 8, 9]
-    ]
-    
-    
     /// Outlets ///
-    // squares
-    @IBOutlet weak var square1: UIImageView!
-    @IBOutlet weak var square2: UIImageView!
-    @IBOutlet weak var square3: UIImageView!
-    @IBOutlet weak var square4: UIImageView!
-    @IBOutlet weak var square5: UIImageView!
-    @IBOutlet weak var square6: UIImageView!
-    @IBOutlet weak var square7: UIImageView!
-    @IBOutlet weak var square8: UIImageView!
-    @IBOutlet weak var square9: UIImageView!
+   
+    @IBOutlet var Squares: [UIImageView]!
     
-    // tokens
     
-    @IBOutlet weak var xToken: UIImageView!
-    @IBOutlet weak var oToken: UIImageView!
+    @IBOutlet weak var gameBoardStack: UIStackView!
+    
+
+    
+    
+    // Symbols
+    
+    @IBOutlet weak var xSymbol: UIImageView!
+    @IBOutlet weak var oSymbol: UIImageView!
     
     
     var initialTokenPosition: CGPoint = CGPoint.zero
@@ -40,38 +31,62 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        initialTokenPosition = xSymbol.center
+        initialTokenPosition = oSymbol.center
         
-        
-        initialTokenPosition = xToken.center
-        initialTokenPosition = oToken.center
-        
-        for (keys,values) in gameBoard {
+      /*  for (keys,values) in gameBoard {
             
                    print("rad är \(keys). ruta är \(values) ")
         }
-        // Do any additional setup after loading the view.
+        */
+        
+        
     }
     
     
-    
+
     
     
     
     
     @IBAction func onXDrag(_ sender: UIPanGestureRecognizer) {
         
+        
         let translation = sender.translation(in: self.view)
          
-        xToken.center = CGPoint(x: translation.x + xToken.center.x, y: translation.y + xToken.center.y )
+        xSymbol.center = CGPoint(x: translation.x + xSymbol.center.x, y: translation.y + xSymbol.center.y )
         
         sender.setTranslation(CGPoint.zero, in: self.view)
         
         
-        if sender.state == .ended {
+      // arra.enumerated() returns a sequence of pairs, where each pair contains the index and the element
+        for (index, square) in Squares.enumerated() {
+        
+        // Converts the view which the squares and the X symbol relates to, from the parent view of the components (in this case VStack) to the root view of the screen
+            
+            let squareFrame = square.superview?.convert(square.frame, to: view) ?? square.frame
+            
+            let xSymbol = xSymbol.superview?.convert(xSymbol.frame, to: view) ?? xSymbol.frame
+        
+            // Checks if squareFram contains symbol and if the move has not already been done
+            if squareFrame.contains(xSymbol) && square.image != UIImage(systemName: "xmark") &&  square.image != UIImage(systemName: "circle") {
+        
+                sender.state = .ended
+            
+                square.image = UIImage(systemName: "xmark")
+                square.tintColor = UIColor.systemGreen
             
 
-            xToken.center = initialTokenPosition
+            }
+            
         }
+        
+        if sender.state == .ended {
+            xSymbol.center = initialTokenPosition
+        }
+        
+        
         
         
     }
@@ -84,15 +99,35 @@ class GameViewController: UIViewController {
         
         let translation = sender.translation(in: self.view)
          
-        oToken.center = CGPoint(x: translation.x + oToken.center.x, y: translation.y + oToken.center.y )
+        oSymbol.center = CGPoint(x: translation.x + oSymbol.center.x, y: translation.y + oSymbol.center.y )
         
         sender.setTranslation(CGPoint.zero, in: self.view)
         
-        if sender.state == .ended {
+        for (index, square) in Squares.enumerated() {
+        
+        // Converts the view which the squares and the X symbol relates to, from the parent view of the components (in this case VStack) to the root view of the screen
+            
+            let squareFrame = square.superview?.convert(square.frame, to: view) ?? square.frame
+            
+            let oSymbol = oSymbol.superview?.convert(oSymbol.frame, to: view) ?? oSymbol.frame
+        
+            // Checks if squareFram contains symbol and if the move has not already been done
+            if squareFrame.contains(oSymbol) && square.image != UIImage(systemName: "xmark") &&  square.image != UIImage(systemName: "circle") {
+        
+                sender.state = .ended
+            
+                square.image = UIImage(systemName: "circle")
+                square.tintColor = UIColor.systemPink
             
 
-            oToken.center = initialTokenPosition
+            }
+            
         }
+        
+        if sender.state == .ended {
+            oSymbol.center = initialTokenPosition
+        }
+        
         
         
     }

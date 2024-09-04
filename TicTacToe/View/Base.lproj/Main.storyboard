@@ -16,39 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="P8p-CO-DmN" userLabel="playerOneStack">
-                                <rect key="frame" x="10" y="68.999999999999986" width="373" height="159.66666666666663"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Player 1 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ait-sl-BPc">
-                                        <rect key="frame" x="136.66666666666666" y="0.0" width="100" height="23.666666666666668"/>
-                                        <color key="tintColor" systemColor="systemGreenColor"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                        <color key="textColor" systemColor="systemGreenColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fSz-GB-FQH">
-                                        <rect key="frame" x="151.66666666666666" y="47.333333333333343" width="70" height="65"/>
-                                        <color key="tintColor" systemColor="systemGreenColor"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="C3P-Ng-Wck"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="UX0-3e-tnT"/>
-                                            <constraint firstAttribute="height" constant="70" id="cLK-F5-BpT"/>
-                                        </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="RTJ-5j-UjZ" appends="YES" id="r7k-gG-Srh"/>
-                                        </connections>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyL-dv-kOf">
-                                        <rect key="frame" x="147.33333333333334" y="135.66666666666666" width="78.333333333333343" height="24"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <color key="textColor" systemColor="systemGreenColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eEb-rl-ayz" userLabel="parentStack">
-                                <rect key="frame" x="39" y="268.66666666666669" width="315" height="315.00000000000006"/>
+                                <rect key="frame" x="40" y="268.66666666666669" width="315" height="315.00000000000006"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLV-Z6-aeg" userLabel="rowStack">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="105"/>
@@ -139,22 +108,56 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="xHS-ju-65l" userLabel="playerTwoStack">
-                                <rect key="frame" x="10" y="646.66666666666663" width="373" height="161.33333333333337"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="P8p-CO-DmN" userLabel="playerOneStack">
+                                <rect key="frame" x="10" y="68.999999999999986" width="375" height="159.66666666666663"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUd-OK-Kt5">
-                                        <rect key="frame" x="147.33333333333334" y="0.0" width="78.333333333333343" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Player 1 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ait-sl-BPc">
+                                        <rect key="frame" x="137.66666666666666" y="0.0" width="100" height="23.666666666666668"/>
+                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fSz-GB-FQH">
+                                        <rect key="frame" x="152.66666666666666" y="47.333333333333343" width="70" height="65"/>
+                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="C3P-Ng-Wck"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="UX0-3e-tnT"/>
+                                            <constraint firstAttribute="height" constant="70" id="cLK-F5-BpT"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="RTJ-5j-UjZ" appends="YES" id="r7k-gG-Srh"/>
+                                        </connections>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyL-dv-kOf">
+                                        <rect key="frame" x="148.33333333333334" y="135.66666666666666" width="78.333333333333343" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ait-sl-BPc" firstAttribute="top" secondItem="P8p-CO-DmN" secondAttribute="top" id="aDD-5B-GWW"/>
+                                    <constraint firstItem="LyL-dv-kOf" firstAttribute="top" secondItem="fSz-GB-FQH" secondAttribute="bottom" constant="10" id="dMQ-Nw-DZT"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="xHS-ju-65l" userLabel="playerTwoStack">
+                                <rect key="frame" x="10" y="613.66666666666663" width="375" height="194.33333333333337"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUd-OK-Kt5">
+                                        <rect key="frame" x="148.33333333333334" y="0.0" width="78.333333333333343" height="57"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" systemColor="systemPinkColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1TB-gF-M3m">
-                                        <rect key="frame" x="151.66666666666666" y="43.000000000000007" width="70" height="68.666666666666686"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1TB-gF-M3m">
+                                        <rect key="frame" x="152.66666666666666" y="76" width="70" height="68.666666666666686"/>
                                         <color key="tintColor" systemColor="systemPinkColor"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="9fy-OF-giB"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="Sek-it-LEa"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="tIA-Qs-wia"/>
                                             <constraint firstAttribute="width" constant="70" id="zfH-uv-WcU"/>
                                         </constraints>
@@ -162,15 +165,20 @@
                                             <outletCollection property="gestureRecognizers" destination="v5z-tm-gch" appends="YES" id="4Jj-sR-lcu"/>
                                         </connections>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIJ-9l-f3o">
-                                        <rect key="frame" x="137.66666666666666" y="130" width="97.666666666666657" height="31.333333333333343"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Player 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIJ-9l-f3o">
+                                        <rect key="frame" x="122.66666666666666" y="163" width="130" height="31.333333333333343"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="19i-o9-ONy"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <color key="textColor" systemColor="systemPinkColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="RUd-OK-Kt5" firstAttribute="top" secondItem="xHS-ju-65l" secondAttribute="top" constant="10" id="NUD-TV-kL2"/>
+                                    <constraint firstItem="DIJ-9l-f3o" firstAttribute="top" secondItem="1TB-gF-M3m" secondAttribute="bottom" constant="10" id="Lg4-Ym-unr"/>
+                                    <constraint firstAttribute="bottom" secondItem="DIJ-9l-f3o" secondAttribute="bottom" constant="5" id="Tvl-L0-WZN"/>
+                                    <constraint firstItem="DIJ-9l-f3o" firstAttribute="top" secondItem="1TB-gF-M3m" secondAttribute="bottom" constant="20" id="nRh-3s-rlF"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -183,23 +191,27 @@
                             <constraint firstItem="P8p-CO-DmN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="D9y-Zd-Lfj"/>
                             <constraint firstItem="xHS-ju-65l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="N4h-hT-JVi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xHS-ju-65l" secondAttribute="trailing" constant="10" id="TGa-O8-jlq"/>
+                            <constraint firstItem="eEb-rl-ayz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="WYj-fs-pdf"/>
+                            <constraint firstItem="xHS-ju-65l" firstAttribute="top" secondItem="eEb-rl-ayz" secondAttribute="bottom" constant="30" id="Xfh-sj-f76"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eEb-rl-ayz" secondAttribute="trailing" constant="40" id="ale-Py-0Jf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="P8p-CO-DmN" secondAttribute="trailing" constant="10" id="ctg-4q-dHx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xHS-ju-65l" secondAttribute="bottom" constant="10" id="tU4-R0-onC"/>
                             <constraint firstItem="eEb-rl-ayz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="v6r-gB-cqe"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="oToken" destination="1TB-gF-M3m" id="vaq-vG-7EI"/>
-                        <outlet property="square1" destination="4d4-xo-Ujg" id="hgI-ey-eWM"/>
-                        <outlet property="square2" destination="sC1-Tg-X2M" id="aG0-fR-VQd"/>
-                        <outlet property="square3" destination="tla-2V-e8U" id="Dln-K6-yO4"/>
-                        <outlet property="square4" destination="yn4-8b-3WY" id="xJZ-of-btw"/>
-                        <outlet property="square5" destination="00V-CB-zmG" id="CUh-Ys-9FX"/>
-                        <outlet property="square6" destination="ldY-nl-iXe" id="oYU-dT-P6n"/>
-                        <outlet property="square7" destination="Y0X-4V-EPL" id="lgH-gS-hxb"/>
-                        <outlet property="square8" destination="gHM-IZ-tCj" id="6OP-ba-dTx"/>
-                        <outlet property="square9" destination="ea0-6W-Ens" id="22i-k6-j5y"/>
-                        <outlet property="xToken" destination="fSz-GB-FQH" id="nei-mh-0X5"/>
+                        <outlet property="gameBoardStack" destination="eEb-rl-ayz" id="yxx-Wt-GEv"/>
+                        <outlet property="oSymbol" destination="1TB-gF-M3m" id="vaq-vG-7EI"/>
+                        <outlet property="xSymbol" destination="fSz-GB-FQH" id="nei-mh-0X5"/>
+                        <outletCollection property="Squares" destination="4d4-xo-Ujg" collectionClass="NSMutableArray" id="FDu-QL-PTV"/>
+                        <outletCollection property="Squares" destination="sC1-Tg-X2M" collectionClass="NSMutableArray" id="hby-FU-BIz"/>
+                        <outletCollection property="Squares" destination="tla-2V-e8U" collectionClass="NSMutableArray" id="3ql-FI-xwb"/>
+                        <outletCollection property="Squares" destination="yn4-8b-3WY" collectionClass="NSMutableArray" id="oH5-Ip-T4O"/>
+                        <outletCollection property="Squares" destination="00V-CB-zmG" collectionClass="NSMutableArray" id="2WK-Jn-IYz"/>
+                        <outletCollection property="Squares" destination="ldY-nl-iXe" collectionClass="NSMutableArray" id="si3-HE-bAO"/>
+                        <outletCollection property="Squares" destination="Y0X-4V-EPL" collectionClass="NSMutableArray" id="Gnb-bp-UHf"/>
+                        <outletCollection property="Squares" destination="gHM-IZ-tCj" collectionClass="NSMutableArray" id="i7V-mg-qUc"/>
+                        <outletCollection property="Squares" destination="ea0-6W-Ens" collectionClass="NSMutableArray" id="Fts-ON-guY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -225,10 +237,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
