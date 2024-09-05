@@ -10,14 +10,18 @@ import UIKit
 class GameViewController: UIViewController {
     
     
+    // objects
+    
+    var game = Game()
+    
+    var PLAYER_ONE = Player(name: "Ivan", id: 1)
+    var PLAYER_TWO = Player(name: "Onur", id: 2)
+    
+    
     /// Outlets ///
    
     @IBOutlet var Squares: [UIImageView]!
-    
-    
     @IBOutlet weak var gameBoardStack: UIStackView!
-    
-
     
     
     // Symbols
@@ -35,11 +39,7 @@ class GameViewController: UIViewController {
         initialTokenPosition = xSymbol.center
         initialTokenPosition = oSymbol.center
         
-      /*  for (keys,values) in gameBoard {
-            
-                   print("rad är \(keys). ruta är \(values) ")
-        }
-        */
+        
         
         
     }
@@ -47,8 +47,7 @@ class GameViewController: UIViewController {
     
 
     
-    
-    
+    // Can I do collection of these two?
     
     @IBAction func onXDrag(_ sender: UIPanGestureRecognizer) {
         
@@ -62,6 +61,8 @@ class GameViewController: UIViewController {
         
       // arra.enumerated() returns a sequence of pairs, where each pair contains the index and the element
         for (index, square) in Squares.enumerated() {
+            
+            
         
         // Converts the view which the squares and the X symbol relates to, from the parent view of the components (in this case VStack) to the root view of the screen
             
@@ -70,11 +71,18 @@ class GameViewController: UIViewController {
             let xSymbol = xSymbol.superview?.convert(xSymbol.frame, to: view) ?? xSymbol.frame
         
             // Checks if squareFram contains symbol and if the move has not already been done
-            if squareFrame.contains(xSymbol) && square.image != UIImage(systemName: "xmark") &&  square.image != UIImage(systemName: "circle") {
+            if sender.state == .ended && squareFrame.contains(xSymbol) && square.image != UIImage(systemName: "xmark") &&  square.image != UIImage(systemName: "circle") {
         
-                sender.state = .ended
+                
             
                 square.image = UIImage(systemName: "xmark")
+                
+                
+                
+                // Logic to change value of selected square image from 0 to 1 or 2 based on player
+                game.gameLogic(indexMove: index, player: PLAYER_ONE)
+                print(game.gameBoard)
+                
                 square.tintColor = UIColor.systemGreen
             
 
@@ -112,12 +120,14 @@ class GameViewController: UIViewController {
             let oSymbol = oSymbol.superview?.convert(oSymbol.frame, to: view) ?? oSymbol.frame
         
             // Checks if squareFram contains symbol and if the move has not already been done
-            if squareFrame.contains(oSymbol) && square.image != UIImage(systemName: "xmark") &&  square.image != UIImage(systemName: "circle") {
-        
-                sender.state = .ended
+            if sender.state == .ended && squareFrame.contains(oSymbol) && square.image != UIImage(systemName: "xmark") &&  square.image != UIImage(systemName: "circle") {
+    
             
                 square.image = UIImage(systemName: "circle")
                 square.tintColor = UIColor.systemPink
+                
+                game.gameLogic(indexMove: index, player: PLAYER_TWO)
+                print(game.gameBoard)
             
 
             }

@@ -11,8 +11,10 @@ import Foundation
 struct Player {
     
     var name: String
+    var id: Int
     var totalScore: Int?
-   // var token: [String: UIImageView] = ["x" : xtoken ?? ]
-
+    
+    
+  
     
 }
