@@ -80,7 +80,7 @@ class GameViewController: UIViewController {
                 
                 
                 // Logic to change value of selected square image from 0 to 1 or 2 based on player
-                game.gameLogic(indexMove: index, player: PLAYER_ONE)
+                game.gameLogic(i: index, player: PLAYER_ONE)
                 print(game.gameBoard)
                 
                 square.tintColor = UIColor.systemGreen
@@ -126,7 +126,7 @@ class GameViewController: UIViewController {
                 square.image = UIImage(systemName: "circle")
                 square.tintColor = UIColor.systemPink
                 
-                game.gameLogic(indexMove: index, player: PLAYER_TWO)
+                game.gameLogic(i: index, player: PLAYER_TWO)
                 print(game.gameBoard)
             
 
