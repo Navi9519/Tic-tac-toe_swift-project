@@ -12,7 +12,13 @@ struct Player {
     
     var name: String
     var id: Int
-    var totalScore: Int?
+    var totalScore: Int = 0
+    
+    
+    mutating func updateScore() {
+        
+        totalScore += 1
+    }
     
     
   

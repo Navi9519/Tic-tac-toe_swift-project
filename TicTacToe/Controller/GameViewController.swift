@@ -9,6 +9,7 @@ import UIKit
 
 class GameViewController: UIViewController {
     
+
     
     // objects
     
@@ -16,7 +17,8 @@ class GameViewController: UIViewController {
     
     var PLAYER_ONE = Player(name: "Ivan", id: 1)
     var PLAYER_TWO = Player(name: "Onur", id: 2)
-    
+  
+        
     
     /// Outlets ///
    
@@ -35,16 +37,24 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         initialTokenPosition = xSymbol.center
         initialTokenPosition = oSymbol.center
-        
-        
+
         
         
     }
     
     
+    func resetGame() {
+        game.resetBoard()
+        for square in Squares {
+            square.image = UIImage(systemName: "square")
+            square.tintColor = UIColor.black
+        }
+    }
+    
+
 
     
     // Can I do collection of these two?
@@ -62,7 +72,7 @@ class GameViewController: UIViewController {
       // arra.enumerated() returns a sequence of pairs, where each pair contains the index and the element
         for (index, square) in Squares.enumerated() {
             
-            
+           
         
         // Converts the view which the squares and the X symbol relates to, from the parent view of the components (in this case VStack) to the root view of the screen
             
@@ -77,21 +87,28 @@ class GameViewController: UIViewController {
             
                 square.image = UIImage(systemName: "xmark")
                 
-                
+                square.tintColor = UIColor.systemGreen
                 
                 // Logic to change value of selected square image from 0 to 1 or 2 based on player
-                game.gameLogic(i: index, player: PLAYER_ONE)
-                print(game.gameBoard)
+                if game.checkWinner(index: index, player: PLAYER_ONE) {
+                    
+                    resetGame()
+                    
+                } 
                 
-                square.tintColor = UIColor.systemGreen
+                if(!game.gameBoard.contains(0)) {
+                    resetGame()
+                }
             
-
             }
             
         }
         
         if sender.state == .ended {
+            print(game.gameBoard)
             xSymbol.center = initialTokenPosition
+           
+           
         }
         
         
@@ -100,7 +117,7 @@ class GameViewController: UIViewController {
     }
     
    
-        
+   
        
         
     @IBAction func onODrag(_ sender: UIPanGestureRecognizer) {
@@ -126,9 +143,15 @@ class GameViewController: UIViewController {
                 square.image = UIImage(systemName: "circle")
                 square.tintColor = UIColor.systemPink
                 
-                game.gameLogic(i: index, player: PLAYER_TWO)
+                if game.checkWinner(index: index, player: PLAYER_TWO) {
+                resetGame()
+
+                } 
+                if(!game.gameBoard.contains(0)) {
+                    resetGame()
+                }
+                
                 print(game.gameBoard)
-            
 
             }
             
