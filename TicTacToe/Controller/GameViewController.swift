@@ -14,10 +14,12 @@ class GameViewController: UIViewController {
     // objects
     
     var game = Game()
-    
     var PLAYER_ONE = Player(name: "Ivan", id: 1)
     var PLAYER_TWO = Player(name: "Onur", id: 2)
   
+    // variables
+    
+    var isPlaying: Bool = true
         
     
     /// Outlets ///
@@ -26,20 +28,20 @@ class GameViewController: UIViewController {
     @IBOutlet weak var gameBoardStack: UIStackView!
     
     
-    // Symbols
+    // Symbol outles
     
     @IBOutlet weak var xSymbol: UIImageView!
     @IBOutlet weak var oSymbol: UIImageView!
     
     
-    var initialTokenPosition: CGPoint = CGPoint.zero
+    var initialSymbolPosition: CGPoint = CGPoint.zero
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initialTokenPosition = xSymbol.center
-        initialTokenPosition = oSymbol.center
+        initialSymbolPosition = xSymbol.center
+        initialSymbolPosition = oSymbol.center
 
         
         
@@ -60,6 +62,8 @@ class GameViewController: UIViewController {
     // Can I do collection of these two?
     
     @IBAction func onXDrag(_ sender: UIPanGestureRecognizer) {
+         
+        if(isPlaying) {
         
         
         let translation = sender.translation(in: self.view)
@@ -83,11 +87,12 @@ class GameViewController: UIViewController {
             // Checks if squareFram contains symbol and if the move has not already been done
             if sender.state == .ended && squareFrame.contains(xSymbol) && square.image != UIImage(systemName: "xmark") &&  square.image != UIImage(systemName: "circle") {
         
-                
             
                 square.image = UIImage(systemName: "xmark")
                 
                 square.tintColor = UIColor.systemGreen
+                
+                isPlaying.toggle()
                 
                 // Logic to change value of selected square image from 0 to 1 or 2 based on player
                 if game.checkWinner(index: index, player: PLAYER_ONE) {
@@ -106,12 +111,12 @@ class GameViewController: UIViewController {
         
         if sender.state == .ended {
             print(game.gameBoard)
-            xSymbol.center = initialTokenPosition
+            xSymbol.center = initialSymbolPosition
            
            
         }
         
-        
+        }
         
         
     }
@@ -121,6 +126,8 @@ class GameViewController: UIViewController {
        
         
     @IBAction func onODrag(_ sender: UIPanGestureRecognizer) {
+        
+        if (!isPlaying) {
         
         let translation = sender.translation(in: self.view)
          
@@ -142,6 +149,7 @@ class GameViewController: UIViewController {
             
                 square.image = UIImage(systemName: "circle")
                 square.tintColor = UIColor.systemPink
+                isPlaying.toggle()
                 
                 if game.checkWinner(index: index, player: PLAYER_TWO) {
                 resetGame()
@@ -158,10 +166,10 @@ class GameViewController: UIViewController {
         }
         
         if sender.state == .ended {
-            oSymbol.center = initialTokenPosition
+            oSymbol.center = initialSymbolPosition
         }
         
-        
+        }
         
     }
     
