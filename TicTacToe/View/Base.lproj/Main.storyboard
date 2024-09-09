@@ -194,7 +194,9 @@
                     <connections>
                         <outlet property="gameBoardStack" destination="eEb-rl-ayz" id="yxx-Wt-GEv"/>
                         <outlet property="lblPlayerOne" destination="ait-sl-BPc" id="oe7-qd-dlA"/>
+                        <outlet property="lblPlayerOneScore" destination="LyL-dv-kOf" id="Qt4-VF-BbU"/>
                         <outlet property="lblPlayerTwo" destination="DIJ-9l-f3o" id="8c6-t8-btU"/>
+                        <outlet property="lblPlayerTwoScore" destination="RUd-OK-Kt5" id="CYg-0t-Cjx"/>
                         <outlet property="oSymbol" destination="1TB-gF-M3m" id="vaq-vG-7EI"/>
                         <outlet property="xSymbol" destination="fSz-GB-FQH" id="nei-mh-0X5"/>
                         <outletCollection property="Squares" destination="4d4-xo-Ujg" collectionClass="NSMutableArray" id="FDu-QL-PTV"/>

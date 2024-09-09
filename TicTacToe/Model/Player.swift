@@ -8,19 +8,24 @@
 import Foundation
 
 
-struct Player {
+class Player {
     
     var name: String
     var id: Int
     var totalScore: Int = 0
     
+    init(name: String, id: Int, totalScore: Int = 0) {
+          self.name = name
+          self.id = id
+          self.totalScore = totalScore
+      }
     
-    mutating func updateScore() {
+     func updateScore() {
         
         totalScore += 1
     }
     
     
-  
+    
     
 }

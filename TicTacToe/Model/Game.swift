@@ -23,6 +23,7 @@ class Game {
     func checkWinner(index: Int, player: Player) -> Bool {
         
         // Sets the selected square to x or o based on whos playing
+       
         gameBoard[index] = player.id
         
         

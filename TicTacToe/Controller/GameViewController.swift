@@ -30,8 +30,11 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var lblPlayerOne: UILabel!
     @IBOutlet weak var lblPlayerTwo: UILabel!
-    // Symbol outles
     
+    @IBOutlet weak var lblPlayerOneScore: UILabel!
+    @IBOutlet weak var lblPlayerTwoScore: UILabel!
+   
+    // Symbol outles
     @IBOutlet weak var xSymbol: UIImageView!
     @IBOutlet weak var oSymbol: UIImageView!
     
@@ -55,6 +58,7 @@ class GameViewController: UIViewController {
     
     func resetGame() {
         
+        
         game.resetBoard()
         
         for square in Squares {
@@ -65,6 +69,15 @@ class GameViewController: UIViewController {
         playerOneIsPlaying = true
         lblPlayerOne.text = "Player 1s turn"
         lblPlayerTwo.text = "Player 2"
+    }
+    
+    
+    func updateTotalScore(player: Player) {
+        
+        player.updateScore()
+        lblPlayerOneScore.text = "Score \(String(PLAYER_ONE.totalScore))"
+        lblPlayerTwoScore.text = "Score \(String(PLAYER_TWO.totalScore))"
+        
     }
     
     
@@ -104,6 +117,7 @@ class GameViewController: UIViewController {
     
     func handleDrag(for symbol: UIImageView, sender: UIPanGestureRecognizer, player: Player, playerId: Int, playerOneLbl: UILabel, playerTwoLbl: UILabel, imageName: String, tintcolor: UIColor) {
         
+        
         let translation = sender.translation(in: self.view)
         
         symbol.center = CGPoint(x: translation.x + symbol.center.x, y: translation.y + symbol.center.y )
@@ -134,9 +148,11 @@ class GameViewController: UIViewController {
                 }
                 
                 if game.checkWinner(index: index, player: player) {
-        
-                    
+                   
+                    updateTotalScore(player: player)
+                     
                     resetGame()
+                    
                     
                 }
                 if(!game.gameBoard.contains(0)) {
