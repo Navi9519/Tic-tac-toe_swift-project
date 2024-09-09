@@ -111,9 +111,9 @@
                                 <rect key="frame" x="10" y="68.999999999999986" width="375" height="159.66666666666663"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Player 1 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ait-sl-BPc">
-                                        <rect key="frame" x="137.66666666666666" y="0.0" width="100" height="23.666666666666668"/>
+                                        <rect key="frame" x="141.66666666666666" y="0.0" width="92" height="23.666666666666668"/>
                                         <color key="tintColor" systemColor="systemGreenColor"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <color key="textColor" systemColor="systemGreenColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -143,21 +143,20 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="xHS-ju-65l" userLabel="playerTwoStack">
-                                <rect key="frame" x="10" y="613.66666666666663" width="375" height="194.33333333333337"/>
+                                <rect key="frame" x="5" y="623.66666666666663" width="380" height="184.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUd-OK-Kt5">
-                                        <rect key="frame" x="148.33333333333334" y="0.0" width="78.333333333333343" height="57"/>
+                                        <rect key="frame" x="151" y="0.0" width="78.333333333333314" height="49.666666666666664"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" systemColor="systemPinkColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1TB-gF-M3m">
-                                        <rect key="frame" x="152.66666666666666" y="76" width="70" height="68.666666666666686"/>
+                                        <rect key="frame" x="155" y="68.666666666666742" width="70" height="68.666666666666686"/>
                                         <color key="tintColor" systemColor="systemPinkColor"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="9fy-OF-giB"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="tIA-Qs-wia"/>
                                             <constraint firstAttribute="width" constant="70" id="zfH-uv-WcU"/>
                                         </constraints>
                                         <connections>
@@ -165,41 +164,37 @@
                                         </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Player 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIJ-9l-f3o">
-                                        <rect key="frame" x="122.66666666666666" y="163" width="130" height="31.333333333333343"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="130" id="19i-o9-ONy"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                        <rect key="frame" x="145" y="155.66666666666674" width="90" height="28.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <color key="textColor" systemColor="systemPinkColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="DIJ-9l-f3o" firstAttribute="top" secondItem="1TB-gF-M3m" secondAttribute="bottom" constant="10" id="Lg4-Ym-unr"/>
-                                    <constraint firstAttribute="bottom" secondItem="DIJ-9l-f3o" secondAttribute="bottom" constant="5" id="Tvl-L0-WZN"/>
-                                    <constraint firstItem="DIJ-9l-f3o" firstAttribute="top" secondItem="1TB-gF-M3m" secondAttribute="bottom" constant="20" id="nRh-3s-rlF"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eEb-rl-ayz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="38g-Vp-6Wo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xHS-ju-65l" secondAttribute="trailing" constant="5" id="6Gd-Xe-LG6"/>
                             <constraint firstItem="eEb-rl-ayz" firstAttribute="top" secondItem="P8p-CO-DmN" secondAttribute="bottom" constant="40" id="AiE-IJ-psj"/>
                             <constraint firstItem="P8p-CO-DmN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="CJO-ys-dln"/>
                             <constraint firstItem="P8p-CO-DmN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="D9y-Zd-Lfj"/>
                             <constraint firstItem="xHS-ju-65l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="N4h-hT-JVi"/>
+                            <constraint firstItem="xHS-ju-65l" firstAttribute="top" secondItem="eEb-rl-ayz" secondAttribute="bottom" constant="40" id="Q2z-Hf-nFq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xHS-ju-65l" secondAttribute="trailing" constant="10" id="TGa-O8-jlq"/>
                             <constraint firstItem="eEb-rl-ayz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="WYj-fs-pdf"/>
-                            <constraint firstItem="xHS-ju-65l" firstAttribute="top" secondItem="eEb-rl-ayz" secondAttribute="bottom" constant="30" id="Xfh-sj-f76"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eEb-rl-ayz" secondAttribute="trailing" constant="40" id="ale-Py-0Jf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="P8p-CO-DmN" secondAttribute="trailing" constant="10" id="ctg-4q-dHx"/>
+                            <constraint firstItem="xHS-ju-65l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="gcy-4i-YK6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xHS-ju-65l" secondAttribute="bottom" constant="10" id="tU4-R0-onC"/>
                             <constraint firstItem="eEb-rl-ayz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="v6r-gB-cqe"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="gameBoardStack" destination="eEb-rl-ayz" id="yxx-Wt-GEv"/>
+                        <outlet property="lblPlayerOne" destination="ait-sl-BPc" id="oe7-qd-dlA"/>
+                        <outlet property="lblPlayerTwo" destination="DIJ-9l-f3o" id="8c6-t8-btU"/>
                         <outlet property="oSymbol" destination="1TB-gF-M3m" id="vaq-vG-7EI"/>
                         <outlet property="xSymbol" destination="fSz-GB-FQH" id="nei-mh-0X5"/>
                         <outletCollection property="Squares" destination="4d4-xo-Ujg" collectionClass="NSMutableArray" id="FDu-QL-PTV"/>
@@ -236,10 +231,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

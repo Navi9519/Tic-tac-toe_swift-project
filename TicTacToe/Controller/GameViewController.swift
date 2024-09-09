@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
     // variables
     
     var isPlaying: Bool = true
+   
         
     
     /// Outlets ///
@@ -27,7 +28,8 @@ class GameViewController: UIViewController {
     @IBOutlet var Squares: [UIImageView]!
     @IBOutlet weak var gameBoardStack: UIStackView!
     
-    
+    @IBOutlet weak var lblPlayerOne: UILabel!
+    @IBOutlet weak var lblPlayerTwo: UILabel!
     // Symbol outles
     
     @IBOutlet weak var xSymbol: UIImageView!
@@ -39,6 +41,9 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        lblPlayerOne.text = "Player 1s turn"
+        lblPlayerTwo.text = "Player 2"
         
         initialSymbolPosition = xSymbol.center
         initialSymbolPosition = oSymbol.center
@@ -54,6 +59,10 @@ class GameViewController: UIViewController {
             square.image = UIImage(systemName: "square")
             square.tintColor = UIColor.black
         }
+        
+        lblPlayerOne.text = "Player 1s turn"
+        lblPlayerTwo.text = "Player 2"
+        isPlaying.toggle()
     }
     
 
@@ -64,6 +73,8 @@ class GameViewController: UIViewController {
     @IBAction func onXDrag(_ sender: UIPanGestureRecognizer) {
          
         if(isPlaying) {
+            
+            
         
         
         let translation = sender.translation(in: self.view)
@@ -93,6 +104,10 @@ class GameViewController: UIViewController {
                 square.tintColor = UIColor.systemGreen
                 
                 isPlaying.toggle()
+                lblPlayerOne.text = "Player 1"
+                lblPlayerTwo.text = "Player 2s turn"
+            
+                
                 
                 // Logic to change value of selected square image from 0 to 1 or 2 based on player
                 if game.checkWinner(index: index, player: PLAYER_ONE) {
@@ -128,6 +143,10 @@ class GameViewController: UIViewController {
     @IBAction func onODrag(_ sender: UIPanGestureRecognizer) {
         
         if (!isPlaying) {
+            
+            
+            
+           
         
         let translation = sender.translation(in: self.view)
          
@@ -150,6 +169,9 @@ class GameViewController: UIViewController {
                 square.image = UIImage(systemName: "circle")
                 square.tintColor = UIColor.systemPink
                 isPlaying.toggle()
+                lblPlayerTwo.text = "Player 2"
+                lblPlayerOne.text = "Player 1s turn"
+                
                 
                 if game.checkWinner(index: index, player: PLAYER_TWO) {
                 resetGame()
