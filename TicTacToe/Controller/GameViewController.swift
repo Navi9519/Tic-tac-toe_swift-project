@@ -85,6 +85,7 @@ class GameViewController: UIViewController {
     
     
     
+    
     @IBAction func onXDrag(_ sender: UIPanGestureRecognizer) {
         
         
