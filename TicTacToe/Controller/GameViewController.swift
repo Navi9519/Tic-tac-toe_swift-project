@@ -14,8 +14,8 @@ class GameViewController: UIViewController {
     // objects
     
     var game = Game()
-    var PLAYER_ONE = Player(name: "Ivan", id: 1)
-    var PLAYER_TWO = Player(name: "Onur", id: 2)
+    var PLAYER_ONE: Player?
+    var PLAYER_TWO: Player?
     
     // variables
     
@@ -45,8 +45,10 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lblPlayerOne.text = "Player 1s turn"
-        lblPlayerTwo.text = "Player 2"
+        guard let playerOne = PLAYER_ONE, let playerTwo = PLAYER_TWO else {return}
+        
+        lblPlayerOne.text = "\(playerOne.name)s turn"
+        lblPlayerTwo.text = playerTwo.name
         
         initialSymbolPosition = xSymbol.center
         initialSymbolPosition = oSymbol.center
@@ -73,10 +75,10 @@ class GameViewController: UIViewController {
     
     
     func updateTotalScore(player: Player) {
-        
+        guard let playerOne = PLAYER_ONE, let playerTwo = PLAYER_TWO else {return}
         player.updateScore()
-        lblPlayerOneScore.text = "Score \(String(PLAYER_ONE.totalScore))"
-        lblPlayerTwoScore.text = "Score \(String(PLAYER_TWO.totalScore))"
+        lblPlayerOneScore.text = "Score \(String(playerOne.totalScore))"
+        lblPlayerTwoScore.text = "Score \(String(playerTwo.totalScore))"
         
     }
     
@@ -91,7 +93,9 @@ class GameViewController: UIViewController {
         
         if(playerOneIsPlaying) {
             
-            handleDrag(for: xSymbol, sender: sender, player: PLAYER_ONE, playerId: PLAYER_ONE.id, playerOneLbl: lblPlayerOne, playerTwoLbl: lblPlayerTwo, imageName: "xmark", tintcolor: UIColor.systemGreen)
+            guard let playerOne = PLAYER_ONE else {return}
+            
+            handleDrag(for: xSymbol, sender: sender, player: playerOne, playerId: playerOne.id, playerOneLbl: lblPlayerOne, playerTwoLbl: lblPlayerTwo, imageName: "xmark", tintcolor: UIColor.systemGreen)
         }
         
         
@@ -106,7 +110,9 @@ class GameViewController: UIViewController {
         
         if (!playerOneIsPlaying) {
             
-            handleDrag(for: oSymbol, sender: sender, player: PLAYER_TWO, playerId: PLAYER_TWO.id, playerOneLbl: lblPlayerOne, playerTwoLbl: lblPlayerTwo, imageName: "circle", tintcolor: UIColor.systemPink)
+            guard let playerTwo = PLAYER_TWO else {return}
+            
+            handleDrag(for: oSymbol, sender: sender, player: playerTwo, playerId: playerTwo.id, playerOneLbl: lblPlayerOne, playerTwoLbl: lblPlayerTwo, imageName: "circle", tintcolor: UIColor.systemPink)
             
             
         }
@@ -138,14 +144,16 @@ class GameViewController: UIViewController {
                 square.image = UIImage(systemName: imageName)
                 square.tintColor = tintcolor
                 playerOneIsPlaying.toggle()
+            
                 
-                if playerId == PLAYER_ONE.id{
-                    playerOneLbl.text = "Player 1"
-                    playerTwoLbl.text = "Player 2s turn"
+                guard let playerOne = PLAYER_ONE, let playerTwo = PLAYER_TWO else {return}
+                if playerId == playerOne.id{
+                    playerOneLbl.text = playerOne.name
+                    playerTwoLbl.text = "\(playerTwo.name)s turn"
                     
                 } else {
-                    playerTwoLbl.text = "Player 2"
-                    playerOneLbl.text = "Player 1s turn"
+                    playerTwoLbl.text = playerTwo.name
+                    playerOneLbl.text = "\(playerOne.name)s turn"
                 }
                 
                 if game.checkWinner(index: index, player: player) {

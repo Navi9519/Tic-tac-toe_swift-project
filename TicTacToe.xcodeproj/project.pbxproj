@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		96686C862C89A0A400DC768B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96686C852C89A0A400DC768B /* Game.swift */; };
+		966E44D12C90698100069CF7 /* GameMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966E44D02C90698100069CF7 /* GameMenuViewController.swift */; };
 		96B4A11E2C84E68D008C08EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B4A11D2C84E68D008C08EB /* AppDelegate.swift */; };
 		96B4A1202C84E68D008C08EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B4A11F2C84E68D008C08EB /* SceneDelegate.swift */; };
 		96B4A1252C84E68D008C08EB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 96B4A1242C84E68D008C08EB /* Base */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		96686C852C89A0A400DC768B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		966E44D02C90698100069CF7 /* GameMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuViewController.swift; sourceTree = "<group>"; };
 		96B4A11A2C84E68D008C08EB /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96B4A11D2C84E68D008C08EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96B4A11F2C84E68D008C08EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				96B4A1342C84E83A008C08EB /* GameViewController.swift */,
+				966E44D02C90698100069CF7 /* GameMenuViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96DF918A2C86FC2E009B485C /* Player.swift in Sources */,
+				966E44D12C90698100069CF7 /* GameMenuViewController.swift in Sources */,
 				96686C862C89A0A400DC768B /* Game.swift in Sources */,
 				96B4A11E2C84E68D008C08EB /* AppDelegate.swift in Sources */,
 				96B4A1352C84E83A008C08EB /* GameViewController.swift in Sources */,
