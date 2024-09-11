@@ -12,11 +12,9 @@ class GameMenuViewController: UIViewController {
     
     var segueToGameViewController = "segueToGameViewController"
     
-  /*  var names: [String] = ["Obama", "Arnold", "C.Norris", "D.Trump", "M.Jackon", "Messi", "Ronaldo", "King Kong", "Dracula", "Kobe"]
+   var names: [String] = ["Obama", "Arnold", "C.Norris", "D.Trump", "M.Jackon", "Messi", "Ronaldo", "King Kong", "Dracula", "Kobe"]
     
-   */
-    
-    
+
     
     @IBOutlet weak var txtPlayerOne: UITextField!
     @IBOutlet weak var txtPlayerTwo: UITextField!
@@ -34,11 +32,12 @@ class GameMenuViewController: UIViewController {
         
         guard let destinatonVC = segue.destination as? GameViewController else {return}
         
-        let playerOneName = txtPlayerOne.text?.isEmpty == false ? txtPlayerOne.text : "Player 1"
-            let playerTwoName = txtPlayerTwo.text?.isEmpty == false ? txtPlayerTwo.text : "Player 2"
+        // Change this?
+        let playerOneName = txtPlayerOne.text?.isEmpty == false ? txtPlayerOne.text! : (names.randomElement() ?? "Player 1")
+        let playerTwoName = txtPlayerTwo.text?.isEmpty == false ? txtPlayerTwo.text! : (names.randomElement() ?? "Player 2")
             
-        let PLAYER_ONE = Player(name: playerOneName ?? "Player 1", id: 1)
-        let PLAYER_TWO = Player(name: playerTwoName ?? "Player 2", id: 2)
+        let PLAYER_ONE = Player(name: playerOneName, id: 1)
+        let PLAYER_TWO = Player(name: playerTwoName, id: 2)
         
             destinatonVC.PLAYER_ONE = PLAYER_ONE
             destinatonVC.PLAYER_TWO = PLAYER_TWO
@@ -49,11 +48,10 @@ class GameMenuViewController: UIViewController {
     
    
     @IBAction func btnPlay(_ sender: UIButton) {
-       
+    
 
             performSegue(withIdentifier: segueToGameViewController, sender: self)
-        
-           
+
         
     }
     

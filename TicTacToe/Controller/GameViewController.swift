@@ -69,8 +69,10 @@ class GameViewController: UIViewController {
         }
         
         playerOneIsPlaying = true
-        lblPlayerOne.text = "Player 1s turn"
-        lblPlayerTwo.text = "Player 2"
+        guard let playerOne = PLAYER_ONE, let playerTwo = PLAYER_TWO else {return}
+        
+        lblPlayerOne.text = "\(playerOne.name)s turn"
+        lblPlayerTwo.text = playerTwo.name
     }
     
     
