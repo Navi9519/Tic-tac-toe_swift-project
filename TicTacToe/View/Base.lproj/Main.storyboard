@@ -108,7 +108,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="P8p-CO-DmN" userLabel="playerOneStack">
-                                <rect key="frame" x="10" y="10" width="375" height="213.66666666666669"/>
+                                <rect key="frame" x="10" y="10" width="375" height="213.66666666666666"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Player 1 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ait-sl-BPc">
                                         <rect key="frame" x="141.66666666666666" y="0.0" width="92" height="77.666666666666671"/>
@@ -209,6 +209,7 @@
                         <outletCollection property="Squares" destination="Y0X-4V-EPL" collectionClass="NSMutableArray" id="Gnb-bp-UHf"/>
                         <outletCollection property="Squares" destination="gHM-IZ-tCj" collectionClass="NSMutableArray" id="i7V-mg-qUc"/>
                         <outletCollection property="Squares" destination="ea0-6W-Ens" collectionClass="NSMutableArray" id="Fts-ON-guY"/>
+                        <segue destination="kuZ-fC-nui" kind="show" identifier="segueToGameMenuViewController" id="BbP-7x-M6S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -223,24 +224,24 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="112.21374045801527" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="176" y="0.0"/>
         </scene>
         <!--Game Menu View Controller-->
         <scene sceneID="sf8-Op-pAF">
             <objects>
                 <viewController id="kuZ-fC-nui" customClass="GameMenuViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VXN-3U-ghv">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tic Tac Toe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRq-1a-diF">
-                                <rect key="frame" x="-33.666666666666664" y="139" width="153" height="36"/>
+                                <rect key="frame" x="-33.666666666666664" y="80" width="153" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="s1i-KJ-EtA">
-                                <rect key="frame" x="2" y="225" width="81.666666666666671" height="300"/>
+                                <rect key="frame" x="2" y="166" width="81.666666666666671" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Q18-Dl-dTg">
                                         <rect key="frame" x="0.0" y="0.0" width="81.666666666666671" height="54"/>
@@ -311,6 +312,7 @@
                             <constraint firstItem="hRq-1a-diF" firstAttribute="top" secondItem="ars-Ak-vNb" secondAttribute="top" constant="80" id="rXe-Ty-CEE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jOI-JX-AS2"/>
                     <connections>
                         <outlet property="txtPlayerOne" destination="IvQ-mW-EbC" id="Coh-MX-J8H"/>
                         <outlet property="txtPlayerTwo" destination="VqB-M7-A8R" id="Gbr-zg-2yF"/>

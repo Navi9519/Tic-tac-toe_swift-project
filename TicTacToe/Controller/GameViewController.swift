@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
     // variables
     
     var playerOneIsPlaying: Bool = true
+    let segueToGameMenuViewController = "segueToGameMenuViewController"
     
     
     
@@ -86,6 +87,24 @@ class GameViewController: UIViewController {
     
     
     
+    func winnerAlert(title: String) {
+            
+            let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+            
+            // Step 2: Add an "OK" action
+            let keepPlayingAction = UIAlertAction(title: "Keep Playing", style: .default, handler: nil)
+            alertController.addAction(keepPlayingAction)
+        
+        let backToMenuAction  = UIAlertAction(title: "Menu", style: .default) { [self] _ in
+            performSegue(withIdentifier: segueToGameMenuViewController, sender: self)
+            
+            
+        }
+            alertController.addAction(backToMenuAction)
+            
+            // Step 3: Present the alert
+            self.present(alertController, animated: true, completion: nil)
+        }
     
     
     
@@ -160,6 +179,8 @@ class GameViewController: UIViewController {
                 
                 if game.checkWinner(index: index, player: player) {
                    
+                    winnerAlert(title: "\(player.name) won the round")
+                    
                     updateTotalScore(player: player)
                      
                     resetGame()

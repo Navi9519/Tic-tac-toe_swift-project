@@ -9,52 +9,54 @@ import UIKit
 
 class GameMenuViewController: UIViewController {
     
+    var PLAYER_ONE: Player?
+    var PLAYER_TWO: Player?
+    
+    
+    var names: [String] = ["Obama", "Arnold", "C.Norris", "D.Trump", "M.Jackon", "Messi", "Ronaldo", "King Kong", "Dracula", "Kobe"]
     
     var segueToGameViewController = "segueToGameViewController"
     
-   var names: [String] = ["Obama", "Arnold", "C.Norris", "D.Trump", "M.Jackon", "Messi", "Ronaldo", "King Kong", "Dracula", "Kobe"]
-    
-
     
     @IBOutlet weak var txtPlayerOne: UITextField!
     @IBOutlet weak var txtPlayerTwo: UITextField!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        
         
         guard let destinatonVC = segue.destination as? GameViewController else {return}
         
-        // Change this?
-        let playerOneName = txtPlayerOne.text?.isEmpty == false ? txtPlayerOne.text! : (names.randomElement() ?? "Player 1")
-        let playerTwoName = txtPlayerTwo.text?.isEmpty == false ? txtPlayerTwo.text! : (names.randomElement() ?? "Player 2")
-            
-        let PLAYER_ONE = Player(name: playerOneName, id: 1)
-        let PLAYER_TWO = Player(name: playerTwoName, id: 2)
         
-            destinatonVC.PLAYER_ONE = PLAYER_ONE
-            destinatonVC.PLAYER_TWO = PLAYER_TWO
-            
+        destinatonVC.PLAYER_ONE = PLAYER_ONE
+        destinatonVC.PLAYER_TWO = PLAYER_TWO
         
         
     }
     
-   
+    
     @IBAction func btnPlay(_ sender: UIButton) {
-    
-
-            performSegue(withIdentifier: segueToGameViewController, sender: self)
-
+        
+        
+        // Change this?
+        let playerOneName = txtPlayerOne.text!.isEmpty ? (names.randomElement() ?? "Player 1") : txtPlayerOne.text!
+        let playerTwoName = txtPlayerTwo.text!.isEmpty ? (names.randomElement() ?? "Player 2") : txtPlayerTwo.text!
+        
+        PLAYER_ONE = Player(name: playerOneName, id: 1)
+        PLAYER_TWO = Player(name: playerTwoName, id: 2)
+        
+        performSegue(withIdentifier: segueToGameViewController, sender: self)
+        
         
     }
     
-
-
+    
+    
 }
