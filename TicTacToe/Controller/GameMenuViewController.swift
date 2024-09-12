@@ -46,8 +46,10 @@ class GameMenuViewController: UIViewController {
         
         
         // Change this?
-        let playerOneName = txtPlayerOne.text!.isEmpty ? (names.randomElement() ?? "Player 1") : txtPlayerOne.text!
-        let playerTwoName = txtPlayerTwo.text!.isEmpty ? (names.randomElement() ?? "Player 2") : txtPlayerTwo.text!
+        let playerOneName = txtPlayerOne.text!.isEmpty ? (names.randomElement()!) : txtPlayerOne.text!
+        let playerTwoName = txtPlayerTwo.text!.isEmpty ? (names.randomElement()!) : txtPlayerTwo.text!
+        
+       // if let playerOneName = txtPlayerOne.text, let playerTwoName
         
         PLAYER_ONE = Player(name: playerOneName, id: 1)
         PLAYER_TWO = Player(name: playerTwoName, id: 2)

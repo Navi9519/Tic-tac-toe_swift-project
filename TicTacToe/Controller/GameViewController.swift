@@ -20,7 +20,11 @@ class GameViewController: UIViewController {
     // variables
     
     var playerOneIsPlaying: Bool = true
+    var computerIsPlaying: Bool?
     let segueToGameMenuViewController = "segueToGameMenuViewController"
+    
+    
+    
     
     
     
@@ -40,6 +44,11 @@ class GameViewController: UIViewController {
     @IBOutlet weak var oSymbol: UIImageView!
     
     
+    
+    
+    
+    
+    
     var initialSymbolPosition: CGPoint = CGPoint.zero
     
     
@@ -53,6 +62,9 @@ class GameViewController: UIViewController {
         
         initialSymbolPosition = xSymbol.center
         initialSymbolPosition = oSymbol.center
+        
+        /// TEST
+        oSymbol.isUserInteractionEnabled = false
         
         
         
@@ -95,7 +107,7 @@ class GameViewController: UIViewController {
             let keepPlayingAction = UIAlertAction(title: "Keep Playing", style: .default, handler: nil)
             alertController.addAction(keepPlayingAction)
         
-        let backToMenuAction  = UIAlertAction(title: "Menu", style: .default) { [self] _ in
+        let backToMenuAction  = UIAlertAction(title: "Back to Menu", style: .default) { [self] _ in
             performSegue(withIdentifier: segueToGameMenuViewController, sender: self)
             
             
@@ -108,6 +120,42 @@ class GameViewController: UIViewController {
     
     
     
+    func computerMove(computerID: Int) {
+        
+        var remainingZerosIndices: [Int] = []
+        for (index, value) in game.gameBoard.enumerated() {
+            if value == 0 {
+                remainingZerosIndices.append(index)
+            }
+        }
+        
+        if let randomIndex = remainingZerosIndices.randomElement() {
+          
+            game.gameBoard[randomIndex] = computerID
+            
+            for (index, square) in Squares.enumerated() {
+                
+                if index == randomIndex {
+                    
+                    square.image = UIImage(systemName: "circle")
+                    square.tintColor = UIColor.systemPink
+                
+                }
+                
+            }
+        
+        }
+        
+       
+    
+        
+        playerOneIsPlaying = true
+        
+        
+    }
+    
+
+    
     
     @IBAction func onXDrag(_ sender: UIPanGestureRecognizer) {
         
@@ -117,7 +165,15 @@ class GameViewController: UIViewController {
             guard let playerOne = PLAYER_ONE else {return}
             
             handleDrag(for: xSymbol, sender: sender, player: playerOne, playerId: playerOne.id, playerOneLbl: lblPlayerOne, playerTwoLbl: lblPlayerTwo, imageName: "xmark", tintcolor: UIColor.systemGreen)
+            
+            
+            //print("X drag")
+
+                        
+            
         }
+        
+        
         
         
         
@@ -138,7 +194,7 @@ class GameViewController: UIViewController {
             
         }
         
-        
+
     }
     
     
@@ -165,9 +221,13 @@ class GameViewController: UIViewController {
                 square.image = UIImage(systemName: imageName)
                 square.tintColor = tintcolor
                 playerOneIsPlaying.toggle()
+                
             
                 
                 guard let playerOne = PLAYER_ONE, let playerTwo = PLAYER_TWO else {return}
+                
+                
+                
                 if playerId == playerOne.id{
                     playerOneLbl.text = playerOne.name
                     playerTwoLbl.text = "\(playerTwo.name)s turn"
@@ -192,6 +252,7 @@ class GameViewController: UIViewController {
                 }
                 
                 print(game.gameBoard)
+                computerMove(computerID: playerTwo.id)
                 
             }
             
@@ -203,21 +264,9 @@ class GameViewController: UIViewController {
         
         
         
-        
-        
     }
     
     
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }
