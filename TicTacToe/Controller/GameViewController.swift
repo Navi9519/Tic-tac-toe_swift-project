@@ -48,6 +48,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         guard let playerOne = PLAYER_ONE, let playerTwo = PLAYER_TWO else {return}
         
         lblPlayerOne.text = "\(playerOne.name)s turn"
@@ -55,9 +56,6 @@ class GameViewController: UIViewController {
         
         initialSymbolPosition = xSymbol.center
         initialSymbolPosition = oSymbol.center
-        
-        /// TEST
-        oSymbol.isUserInteractionEnabled = false
         
         
         
@@ -115,35 +113,43 @@ class GameViewController: UIViewController {
     
     func computerMove(computerID: Int) {
         
-        var remainingZerosIndices: [Int] = []
+        guard let computerIsPlaying = computerIsPlaying else {return}
         
-        for (index, value) in game.gameBoard.enumerated() {
-            if value == 0 {
-                remainingZerosIndices.append(index)
+        if (computerIsPlaying) {
+            
+            oSymbol.isUserInteractionEnabled = false
+            
+            var remainingZerosIndices: [Int] = []
+            
+            for (index, value) in game.gameBoard.enumerated() {
+                if value == 0 {
+                    remainingZerosIndices.append(index)
+                }
             }
-        }
-        
-        if let randomIndex = remainingZerosIndices.randomElement() {
             
-            game.gameBoard[randomIndex] = computerID
-            
-            for (index, square) in Squares.enumerated() {
+            if let randomIndex = remainingZerosIndices.randomElement() {
                 
-                if index == randomIndex {
+                game.gameBoard[randomIndex] = computerID
+                
+                for (index, square) in Squares.enumerated() {
                     
-                    square.image = UIImage(systemName: "circle")
-                    square.tintColor = UIColor.systemPink
-                   
-                    guard let computer = PLAYER_TWO else {return}
-                    
-                    if game.checkWinner(index: index, player: computer) {
+                    if index == randomIndex {
                         
-                        winnerAlert(title: "\(computer.name) won the round")
+                        square.image = UIImage(systemName: "circle")
+                        square.tintColor = UIColor.systemPink
                         
-                        updateTotalScore(player: computer)
+                        guard let computer = PLAYER_TWO else {return}
                         
-                        resetGame()
-                        
+                        if game.checkWinner(index: index, player: computer) {
+                            
+                            winnerAlert(title: "\(computer.name) won the round")
+                            
+                            updateTotalScore(player: computer)
+                            
+                            resetGame()
+                            
+                            
+                        }
                         
                     }
                     
@@ -151,12 +157,12 @@ class GameViewController: UIViewController {
                 
             }
             
+            
+            
+            playerOneIsPlaying = true
+        } else {
+            return
         }
-        
-        
-        
-        playerOneIsPlaying = true
-        
         
     }
     
@@ -259,6 +265,7 @@ class GameViewController: UIViewController {
                 
                 print(game.gameBoard)
                 computerMove(computerID: playerTwo.id)
+                print(game.gameBoard)
                 
             }
             

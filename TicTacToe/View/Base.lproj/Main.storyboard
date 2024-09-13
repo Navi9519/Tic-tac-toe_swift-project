@@ -239,13 +239,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tic Tac Toe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRq-1a-diF">
-                                <rect key="frame" x="-33.666666666666664" y="80" width="153" height="36"/>
+                                <rect key="frame" x="-33.666666666666664" y="80" width="153" height="212"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="s1i-KJ-EtA">
-                                <rect key="frame" x="2" y="166" width="81.666666666666671" height="300"/>
+                                <rect key="frame" x="2" y="342" width="81.666666666666671" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Q18-Dl-dTg">
                                         <rect key="frame" x="0.0" y="0.0" width="81.666666666666671" height="54"/>
@@ -305,26 +305,46 @@
                                     <constraint firstAttribute="width" constant="200" id="yHY-PM-e1W"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Play against computer?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3V-Xg-f3e">
+                                <rect key="frame" x="82" y="718" width="228" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OdT-EJ-g3r">
+                                <rect key="frame" x="150" y="791" width="51" height="31"/>
+                                <connections>
+                                    <action selector="onSwitch:" destination="kuZ-fC-nui" eventType="valueChanged" id="0DD-Qi-ByC"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ars-Ak-vNb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="OdT-EJ-g3r" secondAttribute="bottom" constant="20" id="5LX-1V-nQw"/>
+                            <constraint firstItem="OdT-EJ-g3r" firstAttribute="leading" secondItem="ars-Ak-vNb" secondAttribute="leading" constant="150" id="5Mt-dE-efr"/>
+                            <constraint firstItem="ars-Ak-vNb" firstAttribute="bottom" secondItem="s1i-KJ-EtA" secondAttribute="bottom" constant="200" id="8iR-Ej-wjN"/>
                             <constraint firstItem="s1i-KJ-EtA" firstAttribute="top" secondItem="hRq-1a-diF" secondAttribute="bottom" constant="50" id="C1U-3B-d35"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="OdT-EJ-g3r" secondAttribute="bottom" constant="20" id="Eo9-NB-gN0"/>
                             <constraint firstItem="ars-Ak-vNb" firstAttribute="trailing" secondItem="s1i-KJ-EtA" secondAttribute="trailing" constant="2" id="Fqx-MZ-UIp"/>
                             <constraint firstItem="s1i-KJ-EtA" firstAttribute="leading" secondItem="ars-Ak-vNb" secondAttribute="leading" constant="2" id="Y4M-X0-iN7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OdT-EJ-g3r" secondAttribute="trailing" constant="150" id="qAJ-WV-g4W"/>
                             <constraint firstItem="hRq-1a-diF" firstAttribute="centerX" secondItem="VXN-3U-ghv" secondAttribute="centerX" id="rFo-aL-cmK"/>
                             <constraint firstItem="hRq-1a-diF" firstAttribute="top" secondItem="ars-Ak-vNb" secondAttribute="top" constant="80" id="rXe-Ty-CEE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jOI-JX-AS2"/>
                     <connections>
+                        <outlet property="lblPlayerTwoOrComp" destination="aXr-95-qDk" id="zFl-ga-cMt"/>
+                        <outlet property="switchPlayAgainstComp" destination="OdT-EJ-g3r" id="Vuz-sX-X7u"/>
                         <outlet property="txtPlayerOne" destination="IvQ-mW-EbC" id="Coh-MX-J8H"/>
                         <outlet property="txtPlayerTwo" destination="VqB-M7-A8R" id="Gbr-zg-2yF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peM-dL-bm7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-940" y="-2"/>
+            <point key="canvasLocation" x="-941.22137404580144" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>
