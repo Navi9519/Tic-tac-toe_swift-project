@@ -21,6 +21,7 @@ class GameViewController: UIViewController {
     
     var playerOneIsPlaying: Bool = true
     var computerIsPlaying: Bool?
+    var initialSymbolPosition: CGPoint = CGPoint.zero
     let segueToGameMenuViewController = "segueToGameMenuViewController"
     
     
@@ -38,18 +39,10 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var lblPlayerOneScore: UILabel!
     @IBOutlet weak var lblPlayerTwoScore: UILabel!
-   
+    
     // Symbol outles
     @IBOutlet weak var xSymbol: UIImageView!
     @IBOutlet weak var oSymbol: UIImageView!
-    
-    
-    
-    
-    
-    
-    
-    var initialSymbolPosition: CGPoint = CGPoint.zero
     
     
     override func viewDidLoad() {
@@ -100,29 +93,30 @@ class GameViewController: UIViewController {
     
     
     func winnerAlert(title: String) {
-            
-            let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-            
-            // Step 2: Add an "OK" action
-            let keepPlayingAction = UIAlertAction(title: "Keep Playing", style: .default, handler: nil)
-            alertController.addAction(keepPlayingAction)
+        
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        
+        let keepPlayingAction = UIAlertAction(title: "Keep Playing", style: .default, handler: nil)
+        alertController.addAction(keepPlayingAction)
         
         let backToMenuAction  = UIAlertAction(title: "Back to Menu", style: .default) { [self] _ in
             performSegue(withIdentifier: segueToGameMenuViewController, sender: self)
             
             
         }
-            alertController.addAction(backToMenuAction)
-            
-            // Step 3: Present the alert
-            self.present(alertController, animated: true, completion: nil)
-        }
+        alertController.addAction(backToMenuAction)
+        
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     
     
     func computerMove(computerID: Int) {
         
         var remainingZerosIndices: [Int] = []
+        
         for (index, value) in game.gameBoard.enumerated() {
             if value == 0 {
                 remainingZerosIndices.append(index)
@@ -130,7 +124,7 @@ class GameViewController: UIViewController {
         }
         
         if let randomIndex = remainingZerosIndices.randomElement() {
-          
+            
             game.gameBoard[randomIndex] = computerID
             
             for (index, square) in Squares.enumerated() {
@@ -139,22 +133,34 @@ class GameViewController: UIViewController {
                     
                     square.image = UIImage(systemName: "circle")
                     square.tintColor = UIColor.systemPink
-                
+                   
+                    guard let computer = PLAYER_TWO else {return}
+                    
+                    if game.checkWinner(index: index, player: computer) {
+                        
+                        winnerAlert(title: "\(computer.name) won the round")
+                        
+                        updateTotalScore(player: computer)
+                        
+                        resetGame()
+                        
+                        
+                    }
+                    
                 }
                 
             }
-        
+            
         }
         
-       
-    
+        
         
         playerOneIsPlaying = true
         
         
     }
     
-
+    
     
     
     @IBAction func onXDrag(_ sender: UIPanGestureRecognizer) {
@@ -168,8 +174,8 @@ class GameViewController: UIViewController {
             
             
             //print("X drag")
-
-                        
+            
+            
             
         }
         
@@ -194,7 +200,7 @@ class GameViewController: UIViewController {
             
         }
         
-
+        
     }
     
     
@@ -222,7 +228,7 @@ class GameViewController: UIViewController {
                 square.tintColor = tintcolor
                 playerOneIsPlaying.toggle()
                 
-            
+                
                 
                 guard let playerOne = PLAYER_ONE, let playerTwo = PLAYER_TWO else {return}
                 
@@ -238,11 +244,11 @@ class GameViewController: UIViewController {
                 }
                 
                 if game.checkWinner(index: index, player: player) {
-                   
+                    
                     winnerAlert(title: "\(player.name) won the round")
                     
                     updateTotalScore(player: player)
-                     
+                    
                     resetGame()
                     
                     
@@ -267,6 +273,6 @@ class GameViewController: UIViewController {
     }
     
     
-
+    
     
 }
