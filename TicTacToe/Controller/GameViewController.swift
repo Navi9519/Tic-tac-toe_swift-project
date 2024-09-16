@@ -24,9 +24,7 @@ class GameViewController: UIViewController {
     var initialSymbolPosition: CGPoint = CGPoint.zero
     let segueToGameMenuViewController = "segueToGameMenuViewController"
     
-    
-    
-    
+
     
     
     /// Outlets ///
@@ -72,11 +70,7 @@ class GameViewController: UIViewController {
             square.tintColor = UIColor.black
         }
         
-        playerOneIsPlaying = true
-        guard let playerOne = PLAYER_ONE, let playerTwo = PLAYER_TWO else {return}
         
-        lblPlayerOne.text = "\(playerOne.name)s turn"
-        lblPlayerTwo.text = playerTwo.name
     }
     
     
@@ -111,7 +105,7 @@ class GameViewController: UIViewController {
     
     
     
-    func computerMove(computerID: Int) {
+    func computerMove(computerID: Int, playerId: Int) {
         
         guard let computerIsPlaying = computerIsPlaying else {return}
         
@@ -163,7 +157,19 @@ class GameViewController: UIViewController {
                 
             }
             
-            playerOneIsPlaying = true
+            playerOneIsPlaying.toggle()
+            
+            
+            guard let playerOne = PLAYER_ONE, let playerTwo = PLAYER_TWO else {return}
+            
+            
+            // sets the UI labels on whos playing based on x or o drag
+                lblPlayerOne.text = playerOne.name
+                lblPlayerTwo.text = "\(playerTwo.name)s turn"
+            
+                lblPlayerTwo.text = playerTwo.name
+                lblPlayerOne.text = "\(playerOne.name)s turn"
+    
             
         } else {
             return
@@ -271,9 +277,16 @@ class GameViewController: UIViewController {
                 }
                 
                 print(game.gameBoard)
-                computerMove(computerID: playerTwo.id)
-                print(game.gameBoard)
                 
+                // Asyncronus code working as a timer, everything inside this funcion will run 1.5 second from .now, invalidates itself.
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    
+                    self.computerMove(computerID: playerTwo.id, playerId: playerId)
+                    print(self.game.gameBoard)
+                    
+                }
+                
+               
             }
             
         }
