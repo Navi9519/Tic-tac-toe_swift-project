@@ -41,8 +41,12 @@ class Game {
         // Check Winner
         for (line) in winningConditions {
             
+            // Tuple -> unpacking three elements for every possible winning condition
+            
             let (a, b, c) = (line[0], line[1], line[2])
             
+            // Checking if the first element in a winning line is NOT 0 and if it is same as rest of the line
+            // -> If so the player/computer wins 
             if(gameBoard[a] != 0 && gameBoard[a] == gameBoard[b] && gameBoard[a] == gameBoard[c]) {
                 
                 return true

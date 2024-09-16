@@ -119,18 +119,23 @@ class GameViewController: UIViewController {
             
             oSymbol.isUserInteractionEnabled = false
             
+            // Creating empty array that will be filled with the remaining 0s from gameBoard array efter player ones turn.
             var remainingZerosIndices: [Int] = []
             
             for (index, value) in game.gameBoard.enumerated() {
                 if value == 0 {
+                    // adds the elements which are not 1 or 2 to the empty array
                     remainingZerosIndices.append(index)
                 }
             }
             
+            // sets variable randomIndex to a random element of the remaining 0 indexes in the array
             if let randomIndex = remainingZerosIndices.randomElement() {
                 
+                // sets the random index which has 0 value in gameboard to computers value 2
                 game.gameBoard[randomIndex] = computerID
                 
+                // Update the UI based on the random computer choice
                 for (index, square) in Squares.enumerated() {
                     
                     if index == randomIndex {
@@ -140,6 +145,7 @@ class GameViewController: UIViewController {
                         
                         guard let computer = PLAYER_TWO else {return}
                         
+                        // checks if computer wins the game 
                         if game.checkWinner(index: index, player: computer) {
                             
                             winnerAlert(title: "\(computer.name) won the round")
@@ -157,9 +163,8 @@ class GameViewController: UIViewController {
                 
             }
             
-            
-            
             playerOneIsPlaying = true
+            
         } else {
             return
         }
@@ -178,8 +183,7 @@ class GameViewController: UIViewController {
             
             handleDrag(for: xSymbol, sender: sender, player: playerOne, playerId: playerOne.id, playerOneLbl: lblPlayerOne, playerTwoLbl: lblPlayerTwo, imageName: "xmark", tintcolor: UIColor.systemGreen)
             
-            
-            //print("X drag")
+
             
             
             
@@ -213,11 +217,13 @@ class GameViewController: UIViewController {
     
     func handleDrag(for symbol: UIImageView, sender: UIPanGestureRecognizer, player: Player, playerId: Int, playerOneLbl: UILabel, playerTwoLbl: UILabel, imageName: String, tintcolor: UIColor) {
         
-        
+        // translation(in:) -> return the amount of movement in the x and y axis
         let translation = sender.translation(in: self.view)
         
+        // adjusts the position of the UI image view on th x and y axis based on finger move.
         symbol.center = CGPoint(x: translation.x + symbol.center.x, y: translation.y + symbol.center.y )
         
+        // resets the translation to 0, 0 after updating the position
         sender.setTranslation(CGPoint.zero, in: self.view)
         
         for (index, square) in Squares.enumerated() {
@@ -239,7 +245,7 @@ class GameViewController: UIViewController {
                 guard let playerOne = PLAYER_ONE, let playerTwo = PLAYER_TWO else {return}
                 
                 
-                
+                // sets the UI labels on whos playing based on x or o drag
                 if playerId == playerOne.id{
                     playerOneLbl.text = playerOne.name
                     playerTwoLbl.text = "\(playerTwo.name)s turn"
@@ -249,6 +255,7 @@ class GameViewController: UIViewController {
                     playerOneLbl.text = "\(playerOne.name)s turn"
                 }
                 
+                // Checks the winner and connects the choosen square index with the gameboard index. 
                 if game.checkWinner(index: index, player: player) {
                     
                     winnerAlert(title: "\(player.name) won the round")
