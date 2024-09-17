@@ -237,6 +237,7 @@ class GameViewController: UIViewController {
         
         // resets the translation to 0, 0 after updating the position
         sender.setTranslation(CGPoint.zero, in: self.view)
+            
         
         for (index, square) in Squares.enumerated() {
             
