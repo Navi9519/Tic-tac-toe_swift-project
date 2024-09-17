@@ -11,7 +11,6 @@ import Foundation
 class Game {
 
     
-    
     var gameBoard: [Int] = [
         0, 0, 0,
         0, 0, 0,

@@ -13,11 +13,9 @@ class GameMenuViewController: UIViewController {
     var PLAYER_TWO: Player?
     var compuerIsPlaying = true
     
-    
     var names: [String] = ["Obama", "Arnold", "C.Norris", "D.Trump", "M.Jackon", "Messi", "Ronaldo", "King Kong", "Dracula", "Kobe"]
     
     let segueToGameViewController = "segueToGameViewController"
-    
     
     @IBOutlet weak var txtPlayerOne: UITextField!
     @IBOutlet weak var txtPlayerTwo: UITextField!
@@ -28,8 +26,7 @@ class GameMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+                
     }
     
     
@@ -38,14 +35,13 @@ class GameMenuViewController: UIViewController {
         
         guard let destinatonVC = segue.destination as? GameViewController else {return}
         
-        
+
         destinatonVC.PLAYER_ONE = PLAYER_ONE
         destinatonVC.PLAYER_TWO = PLAYER_TWO
         
         if switchPlayAgainstComp.isOn {
             destinatonVC.computerIsPlaying = compuerIsPlaying
         }
-        
         
     }
     
@@ -67,7 +63,6 @@ class GameMenuViewController: UIViewController {
         }
         
     }
-    
     
     
     @IBAction func btnPlay(_ sender: UIButton) {
@@ -103,7 +98,6 @@ class GameMenuViewController: UIViewController {
         
         performSegue(withIdentifier: segueToGameViewController, sender: self)
     }
-    
     
     
     func nameInputAlert(message: String) {

@@ -226,7 +226,7 @@ class GameViewController: UIViewController {
     }
     
     
-    // combined Handle drag function for both x and o symbol because they have the same functiolaity
+    // combined Handle drag function for both x and o symbol 
     func handleDrag(for symbol: UIImageView, sender: UIPanGestureRecognizer, initialSymbolPosition: CGPoint, player: Player, playerId: Int, playerOneLbl: UILabel, playerTwoLbl: UILabel, imageName: String, tintcolor: UIColor) {
         
         // translation(in:) -> return the amount of movement in the x and y axis
