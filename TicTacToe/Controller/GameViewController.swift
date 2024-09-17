@@ -21,7 +21,8 @@ class GameViewController: UIViewController {
     
     var playerOneIsPlaying: Bool = true
     var computerIsPlaying: Bool?
-    var initialSymbolPosition: CGPoint = CGPoint.zero
+    var initialSymbolXPosition: CGPoint = CGPoint.zero
+    var initialSymbolOPosition: CGPoint = CGPoint.zero
     let segueToGameMenuViewController = "segueToGameMenuViewController"
     
 
@@ -52,8 +53,8 @@ class GameViewController: UIViewController {
         lblPlayerOne.text = "\(playerOne.name)s turn"
         lblPlayerTwo.text = playerTwo.name
         
-        initialSymbolPosition = xSymbol.center
-        initialSymbolPosition = oSymbol.center
+        initialSymbolXPosition = xSymbol.center
+        initialSymbolOPosition = oSymbol.center
         
         
         
@@ -84,7 +85,7 @@ class GameViewController: UIViewController {
     
     
     
-    func winnerAlert(title: String) {
+    func resultAlert(title: String) {
         
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         
@@ -142,13 +143,20 @@ class GameViewController: UIViewController {
                         // checks if computer wins the game 
                         if game.checkWinner(index: index, player: computer) {
                             
-                            winnerAlert(title: "\(computer.name) won the round")
+                            resultAlert(title: "\(computer.name) won the round")
                             
                             updateTotalScore(player: computer)
                             
                             resetGame()
                             
+                           
                             
+                            
+                        }
+                        
+                        if(!game.gameBoard.contains(0)) {
+                            resultAlert(title: "It's a tie!")
+                            resetGame()
                         }
                         
                     }
@@ -187,10 +195,8 @@ class GameViewController: UIViewController {
             
             guard let playerOne = PLAYER_ONE else {return}
             
-            handleDrag(for: xSymbol, sender: sender, player: playerOne, playerId: playerOne.id, playerOneLbl: lblPlayerOne, playerTwoLbl: lblPlayerTwo, imageName: "xmark", tintcolor: UIColor.systemGreen)
-            
+            handleDrag(for: xSymbol, sender: sender, initialSymbolPosition: initialSymbolXPosition, player: playerOne, playerId: playerOne.id, playerOneLbl: lblPlayerOne, playerTwoLbl: lblPlayerTwo, imageName: "xmark", tintcolor: UIColor.systemGreen)
 
-            
             
             
         }
@@ -211,7 +217,7 @@ class GameViewController: UIViewController {
             
             guard let playerTwo = PLAYER_TWO else {return}
             
-            handleDrag(for: oSymbol, sender: sender, player: playerTwo, playerId: playerTwo.id, playerOneLbl: lblPlayerOne, playerTwoLbl: lblPlayerTwo, imageName: "circle", tintcolor: UIColor.systemPink)
+            handleDrag(for: oSymbol, sender: sender, initialSymbolPosition: initialSymbolOPosition, player: playerTwo, playerId: playerTwo.id, playerOneLbl: lblPlayerOne, playerTwoLbl: lblPlayerTwo, imageName: "circle", tintcolor: UIColor.systemPink)
             
             
         }
@@ -220,8 +226,8 @@ class GameViewController: UIViewController {
     }
     
     
-    
-    func handleDrag(for symbol: UIImageView, sender: UIPanGestureRecognizer, player: Player, playerId: Int, playerOneLbl: UILabel, playerTwoLbl: UILabel, imageName: String, tintcolor: UIColor) {
+    // combined Handle drag function for both x and o symbol because they have the same functiolaity
+    func handleDrag(for symbol: UIImageView, sender: UIPanGestureRecognizer, initialSymbolPosition: CGPoint, player: Player, playerId: Int, playerOneLbl: UILabel, playerTwoLbl: UILabel, imageName: String, tintcolor: UIColor) {
         
         // translation(in:) -> return the amount of movement in the x and y axis
         let translation = sender.translation(in: self.view)
@@ -264,15 +270,17 @@ class GameViewController: UIViewController {
                 // Checks the winner and connects the choosen square index with the gameboard index. 
                 if game.checkWinner(index: index, player: player) {
                     
-                    winnerAlert(title: "\(player.name) won the round")
+                    resultAlert(title: "\(player.name) won the round")
                     
                     updateTotalScore(player: player)
                     
                     resetGame()
                     
                     
+                    
                 }
                 if(!game.gameBoard.contains(0)) {
+                    resultAlert(title: "It's a tie!")
                     resetGame()
                 }
                 
@@ -292,6 +300,7 @@ class GameViewController: UIViewController {
         }
         
         if sender.state == .ended {
+            
             symbol.center = initialSymbolPosition
         }
         

@@ -59,6 +59,11 @@ class GameMenuViewController: UIViewController {
             txtPlayerTwo.placeholder = ""
             lblPlayerTwoOrComp.text = "Computer"
             
+        } else {
+            
+            txtPlayerTwo.isUserInteractionEnabled = true
+            txtPlayerTwo.placeholder = "Name:"
+            lblPlayerTwoOrComp.text = "Player 2"
         }
         
     }
